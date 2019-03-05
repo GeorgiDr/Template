@@ -11,8 +11,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Template.Web.Areas.Identity.Data;
 using Template.Web.Models;
+using Template.Web.Areas.Identity.Data;
 
 namespace Template.Web
 {
@@ -40,7 +40,10 @@ namespace Template.Web
                 options.UseSqlServer(
                     this.Configuration.GetConnectionString("TemplateContextConnection")));
 
-            services.AddDefaultIdentity<TemplateUser>()
+            services.AddDefaultIdentity<TemplateUser>(options =>
+                {
+
+                })
                 .AddEntityFrameworkStores<TemplateContext>();
 
 
