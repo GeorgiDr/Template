@@ -35,14 +35,18 @@ namespace Template.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-
             services.AddDbContext<TemplateContext>(options =>
                 options.UseSqlServer(
-                    this.Configuration.GetConnectionString("TemplateContextConnection")));
+                    this.Configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<TemplateUser>(options =>
                 {
-
+                    options.Password.RequireDigit = false;
+                    options.Password.RequireLowercase = false;
+                    options.Password.RequireNonAlphanumeric = false;
+                    options.Password.RequireUppercase = false;
+                    options.Password.RequiredLength = 6;
+                    options.Password.RequiredUniqueChars = 0;
                 })
                 .AddEntityFrameworkStores<TemplateContext>();
 
