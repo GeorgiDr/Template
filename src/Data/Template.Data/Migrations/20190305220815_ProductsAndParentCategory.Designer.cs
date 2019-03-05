@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Template.Web.Models;
 
 namespace Template.Data.Migrations
 {
     [DbContext(typeof(TemplateContext))]
-    partial class TemplateContextModelSnapshot : ModelSnapshot
+    [Migration("20190305220815_ProductsAndParentCategory")]
+    partial class ProductsAndParentCategory
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,7 +141,7 @@ namespace Template.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ParentCategories");
+                    b.ToTable("ParentCategorys");
                 });
 
             modelBuilder.Entity("Template.Data.Models.Product", b =>
@@ -151,8 +153,6 @@ namespace Template.Data.Migrations
                     b.Property<string>("Content");
 
                     b.Property<string>("Name");
-
-                    b.Property<string>("OldOrNew");
 
                     b.Property<int>("ParentCategoryId");
 

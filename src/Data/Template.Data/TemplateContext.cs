@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Template.Data.Models;
 using Template.Web.Areas.Identity.Data;
 
 namespace Template.Web.Models
@@ -15,6 +16,10 @@ namespace Template.Web.Models
             : base(options)
         {
         }
+
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<ParentCategory> ParentCategories { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
